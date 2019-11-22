@@ -4,6 +4,18 @@ Daya Bay event timelines
 This is a simple module that can be imported or executed to draw basic
 timelines in PDF format.
 
+To install once you've cloned the repository, just run
+
+```
+pip install .
+```
+
+To uninstall run
+
+```
+pip uninstall dyb-timelines
+```
+
 The script is very simple:
 
 ```
