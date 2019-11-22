@@ -4,6 +4,8 @@ Daya Bay event timelines
 This is a simple module that can be imported or executed to draw basic
 timelines in PDF format.
 
+![Example timeline](https://raw.githubusercontent.com/samkohn/dyb-timelines/master/example.png)
+
 To install once you've cloned the repository, just run
 
 ```
