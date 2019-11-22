@@ -7,7 +7,7 @@ timelines in PDF format.
 The script is very simple:
 
 ```
-$ python draw_timelines.py -i <input CSV file> -o <output PDF file>
+$ python draw_timeline.py -i <input CSV file> -o <output PDF file>
 ```
 
 The input CSV file should have a header row which has at least the
@@ -24,12 +24,12 @@ IBD candidate selection.
 The graphics engine is Report Lab's PDFGen module.
 
 If you want to customize the window lengths to
-a different selection, you can ``import draw_timelines`` and write your
+a different selection, you can ``import draw_timeline`` and write your
 own logic that:
 
  1. Computes the appropriate time scale (pixels per nanosecond)
  and determines an position (in pixels) for t0 (default = ``1.5 *
- draw_timelines.MARGIN``);
+ draw_timeline.MARGIN``);
  2. Reads in your event list (e.g. using ``csv.DictReader``) and
  subtracts off a t0;
  3. Creates a ``pdfgen.canvas.Canvas`` object;
