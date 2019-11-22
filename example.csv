@@ -1,0 +1,4 @@
+type,timestamp,detector
+wsmuon     ,3000000000,6
+promptlike ,3000401000,1
+delayedlike,3000501000,1
