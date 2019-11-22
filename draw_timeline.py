@@ -12,8 +12,7 @@ RECT_ALPHA = 0.2
 PROMPT_WINDOW = 400000  # ns
 MUWS_WINDOW = 400000
 
-def draw(c, time, timescale, t0, line_color, rect_color, text,
-        window_dt):
+def draw_marker(c, time, timescale, t0, line_color, text):
     start_x = t0 + time*timescale
     c.setStrokeColorRGB(*line_color, 1)
     c.setLineWidth(4)
@@ -25,22 +24,38 @@ def draw(c, time, timescale, t0, line_color, rect_color, text,
     c.setFont("Helvetica-Bold", 18)
     c.drawString(start_x, HEIGHT/2 - LINE_SIZE - 0.4*inch,
             str(int(time/1000)) + 'us')
-    c.setFillColorRGB(*rect_color, RECT_ALPHA)
+    return
+
+def draw_window(c, time, timescale, t0, window_dt, stroke_color,
+        fill_color):
+    start_x = t0 + time*timescale
+    c.setStrokeColorRGB(*stroke_color, 1)
+    c.setFillColorRGB(*fill_color, RECT_ALPHA)
     c.setLineWidth(2)
     c.rect(start_x, HEIGHT/2 - RECT_SIZE, window_dt*timescale,
             2 * RECT_SIZE, stroke=1, fill=1)
+    return
 
 def draw_prompt(c, time, timescale, t0):
-    draw(c, time, timescale, t0, (0, 1, 0), (0, 1, 0), "P",
-            PROMPT_WINDOW)
+    stroke_color = (0, 1, 0)
+    fill_color = (0, 1, 0)
+    draw_window(c, time, timescale, t0, PROMPT_WINDOW, stroke_color,
+            fill_color)
+    draw_marker(c, time, timescale, t0, stroke_color, "P")
 
 def draw_delayed(c, time, timescale, t0):
-    draw(c, time, timescale, t0, (0, 0, 1), (0, 1, 0), "D",
-            PROMPT_WINDOW)
+    stroke_color = (0, 0, 1)
+    fill_color = (0, 1, 0)
+    draw_window(c, time, timescale, t0, PROMPT_WINDOW, stroke_color,
+            fill_color)
+    draw_marker(c, time, timescale, t0, stroke_color, "D")
 
 def draw_wsmuon(c, time, timescale, t0):
-    draw(c, time, timescale, t0, (1, 0, 0), (1, 0, 0), "mu",
-            MUWS_WINDOW)
+    stroke_color = (1, 0, 0)
+    fill_color = (1, 0, 0)
+    draw_window(c, time, timescale, t0, PROMPT_WINDOW, stroke_color,
+            fill_color)
+    draw_marker(c, time, timescale, t0, stroke_color, "mu")
 
 
 def main(events, outfile):
