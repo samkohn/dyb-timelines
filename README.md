@@ -19,7 +19,7 @@ pip uninstall dyb-timelines
 The script is very simple:
 
 ```
-$ python draw_timeline.py -i <input CSV file> -o <output PDF file>
+$ python -m draw_timeline -i <input CSV file> -o <output PDF file>
 ```
 
 The input CSV file should have a header row which has at least the
